@@ -5,19 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Manufacturer {
+public class DrumKit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private String model;
 
-    @OneToMany
-    private List<DrumKit> drumKits;
+    @ManyToOne
+    private Manufacturer manufacturer;
 }

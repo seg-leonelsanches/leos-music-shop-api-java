@@ -1,8 +1,8 @@
 package br.com.segment.leosmusicstoreapi.controllers;
 
-import br.com.segment.leosmusicstoreapi.dtos.DrumPostDto;
-import br.com.segment.leosmusicstoreapi.models.Drumkit;
-import br.com.segment.leosmusicstoreapi.repositories.DrumkitRepository;
+import br.com.segment.leosmusicstoreapi.dtos.DrumKitPostDto;
+import br.com.segment.leosmusicstoreapi.models.DrumKit;
+import br.com.segment.leosmusicstoreapi.repositories.DrumKitRepository;
 import com.sun.istack.NotNull;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +11,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "/drums")
-public class DrumsController {
+@RequestMapping(path = "/drum-kits")
+public class DrumKitsController {
 
     @Autowired
-    private DrumkitRepository drumkitRepository;
+    private DrumKitRepository drumkitRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -31,8 +31,8 @@ public class DrumsController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addDrum(@RequestBody DrumPostDto drumPostDto) {
-        Drumkit drumkit = modelMapper.map(drumPostDto, Drumkit.class);
+    public ResponseEntity<?> addDrum(@RequestBody DrumKitPostDto drumKitPostDto) {
+        DrumKit drumkit = modelMapper.map(drumKitPostDto, DrumKit.class);
         drumkitRepository.save(drumkit);
         return new ResponseEntity<>(drumkit, HttpStatus.CREATED);
     }
