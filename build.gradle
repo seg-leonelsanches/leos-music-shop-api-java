@@ -22,13 +22,19 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-	implementation 'org.xerial:sqlite-jdbc:3.39.3.0'
-	implementation 'com.h2database:h2:2.1.214'
-	implementation 'mysql:mysql-connector-java:8.0.30'
+	implementation 'org.xerial:sqlite-jdbc'
+	implementation 'com.h2database:h2'
+	implementation 'mysql:mysql-connector-java'
 	implementation 'org.modelmapper:modelmapper:3.1.0'
 }
 

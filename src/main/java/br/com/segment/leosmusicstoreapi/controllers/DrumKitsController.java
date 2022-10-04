@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/drum-kits")
+@CrossOrigin
 public class DrumKitsController {
 
     @Autowired
