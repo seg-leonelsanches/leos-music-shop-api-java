@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -35,7 +36,14 @@ public class DataLoader implements ApplicationRunner {
         manufacturerRepository.save(manufacturers.get(0));
         manufacturerRepository.save(manufacturers.get(1));
 
-        drumkitRepository.save(new DrumKit(null, "DW Bobby Jarzombek Signature", manufacturers.get(1)));
+        drumkitRepository.save(
+                new DrumKit(
+                        null,
+                        "DW Bobby Jarzombek Signature",
+                        manufacturers.get(1),
+                        new HashSet<>()
+                )
+        );
 
         adminRepository.save(
                 new Admin(
