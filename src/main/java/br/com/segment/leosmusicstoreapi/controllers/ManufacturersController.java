@@ -22,7 +22,8 @@ public class ManufacturersController {
 
     @GetMapping("")
     public ResponseEntity<?> getAllManufacturers() {
-        return new ResponseEntity<>(manufacturerRepository.findAll(), HttpStatus.OK);
+        Iterable<Manufacturer> manufacturers = manufacturerRepository.findAllWithDrumKits();
+        return new ResponseEntity<>(manufacturers, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

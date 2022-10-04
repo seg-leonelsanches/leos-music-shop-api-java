@@ -1,16 +1,19 @@
 package br.com.segment.leosmusicstoreapi.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
-@Data
-@Entity
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,7 @@ public class Manufacturer {
 
     private String name;
 
-    @OneToMany
-    private List<DrumKit> drumKits;
+    @JsonManagedReference
+    @OneToMany(mappedBy = "manufacturer")
+    private Set<DrumKit> drumKits;
 }
