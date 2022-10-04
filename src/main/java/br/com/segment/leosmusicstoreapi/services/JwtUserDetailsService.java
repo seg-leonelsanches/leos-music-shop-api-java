@@ -1,8 +1,10 @@
 package br.com.segment.leosmusicstoreapi.services;
 
-import br.com.segment.leosmusicstoreapi.dtos.UserPostDto;
+import br.com.segment.leosmusicstoreapi.dtos.CustomerPostDto;
 import br.com.segment.leosmusicstoreapi.dtos.outputs.UserOutput;
+import br.com.segment.leosmusicstoreapi.models.Customer;
 import br.com.segment.leosmusicstoreapi.models.User;
+import br.com.segment.leosmusicstoreapi.repositories.CustomerRepository;
 import br.com.segment.leosmusicstoreapi.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,9 @@ public class JwtUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
     private PasswordEncoder bcryptEncoder;
 
     @Autowired
@@ -31,12 +36,17 @@ public class JwtUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found with email: " + username);
         }
 
-        return new UserOutput(user.getEmail(), user.getPasswordHash());
+        return new UserOutput(
+                user.getEmail(),
+                user.getPasswordHash(),
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName());
     }
 
-    public User createNewUser(UserPostDto userPostDto) {
-        User user = modelMapper.map(userPostDto, User.class);
-        user.setPasswordHash(bcryptEncoder.encode(userPostDto.getPassword()));
-        return userRepository.save(user);
+    public Customer createNewCustomer(CustomerPostDto customerPostDto) {
+        Customer customer = modelMapper.map(customerPostDto, Customer.class);
+        customer.setPasswordHash(bcryptEncoder.encode(customerPostDto.getPassword()));
+        return customerRepository.save(customer);
     }
 }

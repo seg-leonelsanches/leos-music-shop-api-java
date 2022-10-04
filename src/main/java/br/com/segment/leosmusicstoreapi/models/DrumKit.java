@@ -5,11 +5,11 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Entity(name = "drum_kits")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class DrumKit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

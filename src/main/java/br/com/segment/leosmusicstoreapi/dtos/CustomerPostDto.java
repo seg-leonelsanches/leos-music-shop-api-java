@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserPostDto {
+public class CustomerPostDto {
     private String firstName;
     private String lastName;
     private String email;
