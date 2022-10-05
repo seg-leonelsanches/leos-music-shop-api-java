@@ -37,7 +37,7 @@ dependencies {
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.modelmapper:modelmapper:3.1.0'
 
-	implementation 'com.segment.analytics.java:analytics:+'
+	implementation 'com.segment.analytics.java:analytics:3.3.1'
 }
 
 tasks.named('test') {
