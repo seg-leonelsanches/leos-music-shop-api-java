@@ -18,6 +18,7 @@ public class DrumKit {
     private Long id;
 
     private String model;
+    private double price;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)

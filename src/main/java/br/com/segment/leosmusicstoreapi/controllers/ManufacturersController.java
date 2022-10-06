@@ -42,7 +42,7 @@ public class ManufacturersController {
     public ResponseEntity<?> getOneManufacturer(@PathVariable @NotNull Long id) {
         Optional<Manufacturer> manufacturer = manufacturerRepository.findById(id);
         if (manufacturer.isEmpty()) {
-            return new ResponseEntity<>(manufacturer, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
