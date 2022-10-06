@@ -27,7 +27,7 @@ public class SegmentHelper {
                 .traits(map));
     }
 
-    public void trackEvent(String eventName, String userId, Map<String, String> properties) {
+    public void trackEvent(String eventName, String userId, Map<String, Object> properties) {
         analytics.enqueue(TrackMessage.builder(eventName)
                 .userId(userId)
                 .properties(properties));

@@ -48,7 +48,7 @@ public class ManufacturersController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserOutput principal = (UserOutput) authentication.getPrincipal();
 
-        Map<String, String> properties = new HashMap<>();
+        Map<String, Object> properties = new HashMap<>();
         properties.put("manufacturer", manufacturer.get().getName());
 
         segmentHelper.trackEvent("Visited Manufacturer", principal.getId().toString(), properties);

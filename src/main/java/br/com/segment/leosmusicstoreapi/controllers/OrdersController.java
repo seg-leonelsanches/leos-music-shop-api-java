@@ -4,6 +4,7 @@ import br.com.segment.leosmusicstoreapi.components.SegmentHelper;
 import br.com.segment.leosmusicstoreapi.dtos.OrderDrumKitPostDto;
 import br.com.segment.leosmusicstoreapi.dtos.OrderPostDto;
 import br.com.segment.leosmusicstoreapi.dtos.outputs.UserOutput;
+import br.com.segment.leosmusicstoreapi.helpers.MapsHelper;
 import br.com.segment.leosmusicstoreapi.models.Customer;
 import br.com.segment.leosmusicstoreapi.models.DrumKit;
 import br.com.segment.leosmusicstoreapi.models.Order;
@@ -19,9 +20,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 @RestController
 @RequestMapping(path = "/orders")
@@ -56,7 +56,8 @@ public class OrdersController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> addOrder(@RequestBody OrderPostDto orderPostDto) {
+    public ResponseEntity<?> addOrder(@RequestBody OrderPostDto orderPostDto)
+            throws IllegalAccessException, InvocationTargetException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserOutput principal = (UserOutput) authentication.getPrincipal();
 
@@ -91,6 +92,11 @@ public class OrdersController {
         }
 
         orderRepository.save(order);
+
+        segmentHelper.trackEvent("Order Placed",
+                principal.getId().toString(),
+                MapsHelper.objectToMap(order));
+
         return new ResponseEntity<>(order, HttpStatus.ACCEPTED);
     }
 }
