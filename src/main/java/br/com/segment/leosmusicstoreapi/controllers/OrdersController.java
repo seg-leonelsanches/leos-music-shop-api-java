@@ -49,7 +49,7 @@ public class OrdersController {
     public ResponseEntity<?> getOneOrder(@PathVariable @NotNull Long id) {
         Optional<Order> order = orderRepository.findById(id);
         if (order.isEmpty()) {
-            return new ResponseEntity<>(order, HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
         return new ResponseEntity<>(order, HttpStatus.OK);
@@ -95,7 +95,7 @@ public class OrdersController {
 
         segmentHelper.trackEvent("Order Placed",
                 principal.getId().toString(),
-                MapsHelper.objectToMap(order));
+                MapsHelper.objectToMap(order, 0));
 
         return new ResponseEntity<>(order, HttpStatus.ACCEPTED);
     }

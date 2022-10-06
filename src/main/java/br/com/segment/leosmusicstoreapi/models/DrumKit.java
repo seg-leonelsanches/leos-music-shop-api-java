@@ -28,4 +28,8 @@ public class DrumKit {
     @JsonManagedReference
     @OneToMany(mappedBy = "drumKit")
     private Set<OrderDrumKit> drumKitOrders;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "drumKit")
+    private Set<GuestOrderDrumKit> drumKitGuestOrders;
 }

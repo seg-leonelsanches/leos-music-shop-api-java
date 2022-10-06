@@ -56,6 +56,7 @@ public class DataLoader implements ApplicationRunner {
                         "DW Bobby Jarzombek Signature",
                         3200F,
                         manufacturers.get(1),
+                        new HashSet<>(),
                         new HashSet<>()
                 )
         );
