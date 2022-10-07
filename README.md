@@ -35,26 +35,48 @@ This app uses [Segment Analytics Java](https://github.com/segmentio/analytics-ja
 
 ## Running
 
-You can run in your favorite IDE or generate a JAR.
+You can run this app in your favorite IDE or generate a JAR and run it through the command line. 
 
 ### Prerequisites
 
 For any mode, it's necessary to have a JDK installed. This project was written using the JDK 17, but it is code compatible with the JDK 11. 
 
+Three settings are required to be set:
+
+- `jwt.secret` (or `JWT_SECRET` environment variable): secret used to generate JWT tokens;
+- `spring.profiles.active` (or `SPRING_PROFILES_ACTIVE` environment variable): the active spring profile. Used to defined which database to use (see `Database` below);
+- `segment.write-key` (or `SEGMENT_WRITE_KEY` environment variable): The write key from your Segment source.
+
+They are set by default in `src/main/resources/application.properties`. You can either modify the file, adding your configuration values, or set the corresponding environment variables. 
+
+#### Database selection
+
 If you prefer to run the project with an in-memory database, this project has two options:
 
 - SQLite
-- H2
+- H2 (the default)
 
 If you prefer something more permanent, MySQL is supported. Just make sure to have a MySQL instance running. If needed, change the credentials at `src/main/resources/persistence-mysql.properties`.
 
-If you want to use another database, this project uses JDBC and can be customized for any database that supports JDBC. Feel free to fork it and add the desired support. 
+To select which database to use, you can either:
 
-To select which database to use, you can either modify `src/main/resources/application.properties` file (`spring.profiles.active` property) or starting the application with a VM option: `-Dspring.profiles.active=database`. `spring.profiles.active` supports three different values:
+- Modify `src/main/resources/application.properties` file (`spring.profiles.active` property) 
+- Start the application with a VM option: `-Dspring.profiles.active=<database>`. 
+- Add an environment variable called `SPRING_PROFILES_ACTIVE`, whose possible values are below.
+
+`spring.profiles.active` supports three different values:
 
 - `sqlite`
 - `h2`
 - `mysql`
+
+If you want to use another database, this project uses JDBC and can be customized for any database that supports JDBC. Feel free to fork it and add the desired support.
+
+#### Segment Setup
+
+This app also requires the write key from your Segment source set. In `src/main/resources/application.properties`, change the value of `segment.write-key` to the corresponding write key registered in your source.
+
+You can also set an environment variable called `SEGMENT_WRITE_KEY` with the value of your Segment source.
 
 ### Running through the command line
 
