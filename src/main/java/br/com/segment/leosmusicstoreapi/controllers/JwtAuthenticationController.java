@@ -4,6 +4,7 @@ import br.com.segment.leosmusicstoreapi.components.JwtTokenUtil;
 import br.com.segment.leosmusicstoreapi.components.SegmentHelper;
 import br.com.segment.leosmusicstoreapi.dtos.CustomerPostDto;
 import br.com.segment.leosmusicstoreapi.dtos.outputs.UserOutput;
+import br.com.segment.leosmusicstoreapi.helpers.MapsHelper;
 import br.com.segment.leosmusicstoreapi.models.Customer;
 import br.com.segment.leosmusicstoreapi.models.auth.JwtRequest;
 import br.com.segment.leosmusicstoreapi.models.auth.JwtResponse;
@@ -15,6 +16,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.InvocationTargetException;
 
 @RestController
 @CrossOrigin
@@ -46,8 +49,14 @@ public class JwtAuthenticationController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> saveUser(@RequestBody CustomerPostDto user) {
+    public ResponseEntity<?> saveUser(@RequestBody CustomerPostDto user)
+            throws InvocationTargetException, IllegalAccessException {
         Customer newCustomer = userDetailsService.createNewCustomer(user);
+
+        segmentHelper.trackEvent("New Customer Registered",
+                newCustomer.getId().toString(),
+                MapsHelper.objectToMap(newCustomer, 0));
+
         return ResponseEntity.ok(newCustomer);
     }
 

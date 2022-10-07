@@ -16,6 +16,8 @@ public class MapsHelper {
      * to be sent through Segment Analytics instance.
      *
      * @param instance The object to be converted to a HashMap
+     * @param depth The recursion depth. Currently not more than 2 levels
+     *              to avoid `StackOverflowException`.
      * @param <T>      Any class, but preferably a model or DTO.
      * @return A HashMap with the converted object.
      * @throws IllegalAccessException
