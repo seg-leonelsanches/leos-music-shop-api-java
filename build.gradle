@@ -38,6 +38,8 @@ dependencies {
 	implementation 'org.modelmapper:modelmapper:3.1.0'
 	implementation 'org.apache.commons:commons-text:1.10.0'
 
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.12'
+
 	implementation 'com.segment.analytics.java:analytics:3.3.1'
 }
 

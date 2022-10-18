@@ -101,3 +101,7 @@ To run the built JAR, use:
 ```sh
 java -jar leos-music-shop-api-version-SNAPSHOT.jar
 ```
+
+## Documentation
+
+There's a Swagger interface configured at http://localhost:8080/swagger-ui.html
