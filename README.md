@@ -19,6 +19,7 @@ This is used to validate Segment application onboarding using Java/Spring Boot a
   - [H2](https://www.h2database.com/html/main.html)
   - [MySQL](https://www.mysql.com/)
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa)
+- [Springdoc](https://springdoc.org/)
 - [Gradle](https://gradle.org/)
 - [Lombok](https://projectlombok.org/)
 - [ModelMapper](http://modelmapper.org/)
