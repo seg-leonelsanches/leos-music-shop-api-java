@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ManufacturerRepository extends JpaRepository<Manufacturer, Long> {
-    @Query("select manufacturer from Manufacturer manufacturer left join fetch manufacturer.drumKits")
+    @Query("select manufacturer from manufacturers manufacturer left join fetch manufacturer.drumKits")
     Iterable<Manufacturer> findAllWithDrumKits();
 }

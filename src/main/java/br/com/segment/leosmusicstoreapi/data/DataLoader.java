@@ -55,6 +55,7 @@ public class DataLoader implements ApplicationRunner {
                         null,
                         "DW Bobby Jarzombek Signature",
                         3200F,
+                        "https://media.sweetwater.com/api/i/q-82__f-webp__ha-b01aee1aa16930d2__hmac-8ea28569a925eef634fed18445eb91ff84bfe99e/images/items/750/DRFP5PGB-BN-large.jpg.auto.webp",
                         manufacturers.get(1),
                         new HashSet<>(),
                         new HashSet<>()

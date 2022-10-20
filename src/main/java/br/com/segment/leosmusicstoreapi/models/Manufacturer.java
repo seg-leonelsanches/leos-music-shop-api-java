@@ -9,11 +9,11 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Set;
 
+@Entity(name = "manufacturers")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Manufacturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

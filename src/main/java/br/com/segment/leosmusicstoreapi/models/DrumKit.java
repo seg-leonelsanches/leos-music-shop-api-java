@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity(name = "drum_kits")
@@ -17,8 +18,11 @@ public class DrumKit {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
     private String model;
+    @NotNull
     private double price;
+    private String mainImage;
 
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
